@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
-
+import dotenv from "dotenv";
+dotenv.config({ path: "./.env" });
 const app = express();
 
 app.use(express.json());
@@ -9,6 +10,7 @@ app.use(
     origin: [process.env.FRONT_END_URL, process.env.LOCALHOST_END_URL],
   })
 );
+
 app.use(express.urlencoded({ extended: true }));
 
 import userRouter from "./src/routers/userRouters.js";
