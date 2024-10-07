@@ -4,7 +4,11 @@ import cors from "cors";
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(
+  cors({
+    origin: [process.env.FRONT_END_URL, process.env.LOCALHOST_END_URL],
+  })
+);
 app.use(express.urlencoded({ extended: true }));
 
 import userRouter from "./src/routers/userRouters.js";
