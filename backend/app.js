@@ -7,9 +7,10 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: [process.env.FRONT_END_URL, process.env.LOCALHOST_END_URL],
+    origin: process.env.VITE_BASE_URL,
   })
 );
+console.log(process.env.VITE_BASE_URL);
 
 app.use(express.urlencoded({ extended: true }));
 

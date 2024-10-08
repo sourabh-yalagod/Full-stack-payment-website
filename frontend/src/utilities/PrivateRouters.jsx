@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { jwtDecode } from "jwt-decode";
+import { userAuth } from "./User";
 
 const PrivateRouters = () => {
-  const [id, setId] = useState(null);
-  const token = localStorage.getItem("token");
-  useEffect(() => {
-    if (token) {
-      const decodedToken = jwtDecode(token);
-      console.log(decodedToken);
-    }
-  }, [token]);
+  const token = userAuth();
 
   if (!token) {
     return <Navigate to="/signin" />;

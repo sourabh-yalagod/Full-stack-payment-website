@@ -90,8 +90,6 @@ const signin = asyncHandler(async (req, res) => {
 
 const users = asyncHandler(async (req, res) => {
   const { search, limit, page } = req.query;
-  console.log(limit, page);
-
   const searchRegex = search ? new RegExp(search, "i") : null;
   const users = search
     ? await User.find({
